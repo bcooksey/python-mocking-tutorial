@@ -1,8 +1,4 @@
-from datetime import datetime
-
-class Watch():
-    def get_time(self):
-        return datetime.now()
+from watch import Watch
 
 class Man():
     watch = None

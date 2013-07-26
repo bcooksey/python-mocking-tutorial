@@ -1,10 +1,10 @@
 # Example of basic mocking
 import unittest
-from foo_1 import Man
+from man import Man
 from mock import patch, MagicMock
 
 class Foo(unittest.TestCase):
-    @patch('foo_1.Watch')
+    @patch('man.Watch')
     def test_1(self, mock_watch):
         # Create a fake datetime object
         mock_dt = MagicMock()
@@ -15,6 +15,7 @@ class Foo(unittest.TestCase):
 
         man = Man()
         self.assertEquals(man.tell_time(), 'It is now 01:05 pm')
+        mock_dt.strftime.assert_called_once_with('%I:%M %p')
 
 # Safely ignore, needed to get test suite to run
 if __name__ == '__main__':

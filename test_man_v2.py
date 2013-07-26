@@ -1,19 +1,19 @@
 # Example of when a mock covers up a bug
 import unittest
-from foo_2 import Man
+from man import Man
 from mock import patch, MagicMock
 
 class Foo(unittest.TestCase):
 
     def test_1(self):
-        with patch('foo_2.Watch') as mock_watch:
+        with patch('man.Watch') as mock_watch:
             mock_dt = MagicMock()
             mock_dt.strftime.return_value = '01:05 pm'
             mock_watch.return_value.get_time.return_value = mock_dt
 
             man = Man()
             self.assertEqual(man.tell_time(), 'It is now 01:05 pm')
-
+            mock_dt.strftime.assert_called_once_with('%I:%M %p')
 
         # Uncomment and run test to see that actual code would die
         # unmocked_man = Man()

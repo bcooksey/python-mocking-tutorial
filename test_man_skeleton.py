@@ -1,6 +1,6 @@
 # Example of Basic Test Setup
 import unittest
-from foo import Man
+from man import Man
 
 class Foo(unittest.TestCase):
 
