@@ -13,6 +13,7 @@ class Foo(unittest.TestCase):
 
             man = Man()
             self.assertEqual(man.tell_time(), 'It is now 01:05 pm')
+            mock_dt.strftime.assert_called_once_with('%I:%M %p')
         
         # Uncomment and run test to see that actual code would die
         # unmocked_man = Man()
