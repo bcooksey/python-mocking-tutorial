@@ -6,7 +6,7 @@ from mock import patch, MagicMock
 class Foo(unittest.TestCase):
 
     def test_1(self):
-        with patch('man.Watch', autospec=True) as mock_watch:
+        with patch('man.Watch', spec=True) as mock_watch:
             mock_dt = MagicMock()
             mock_dt.strftime.return_value = '01:05 pm'
             mock_watch.return_value.time.return_value = mock_dt
